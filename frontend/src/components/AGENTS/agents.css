@@ -1,0 +1,854 @@
+/* ============================================================
+   Agent Container
+   ============================================================ */
+.agent-container {
+  display: grid;
+  grid-template-areas:
+    "header-menu header-menu"
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  background: #f5f5f5;
+  position: relative;
+}
+
+/* ============================================================
+   Header Menu (Top Navigation)
+   ============================================================ */
+.agent-header-menu {
+  grid-area: header-menu;
+  background: #1e293b;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.agent-header-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.agent-header-menu li {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  position: relative;
+}
+
+.agent-header-menu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.agent-header-menu li.active {
+  background: #3b82f6;
+  font-weight: 600;
+}
+
+.agent-header-menu .menu-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+.agent-header {
+  grid-area: header;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.agent-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.agent-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   Sidebar
+   ============================================================ */
+.agent-sidebar {
+  grid-area: sidebar;
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+}
+
+.agent-sidebar h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.agent-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.agent-sidebar li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.agent-sidebar li:hover {
+  background: #f0f0f0;
+}
+
+.agent-sidebar li.active {
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+}
+
+.agent-sidebar .icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.agent-sidebar .menu-label {
+  flex: 1;
+}
+
+.agent-sidebar .menu-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.agent-sidebar li.active .menu-badge {
+  background: white;
+  color: #3b82f6;
+}
+
+/* ============================================================
+   Content Area
+   ============================================================ */
+.agent-content {
+  grid-area: content;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* ============================================================
+   Workflow Step
+   ============================================================ */
+.workflow-step {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.step-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.step-description {
+  color: #666;
+  margin: 0 0 1.5rem 0;
+}
+
+/* ============================================================
+   Dynamic Form
+   ============================================================ */
+.dynamic-form {
+  max-width: 600px;
+}
+
+.dynamic-form h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group .required {
+  color: #e74c3c;
+  margin-left: 0.25rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.submit-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   Dynamic View
+   ============================================================ */
+.dynamic-view {
+  margin-top: 1rem;
+}
+
+.dynamic-view h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.view-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.chart-placeholder {
+  background: #f9f9f9;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.chart-placeholder h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.chart-placeholder p {
+  margin: 0;
+  color: #666;
+}
+
+/* ============================================================
+   Workflow Navigation
+   ============================================================ */
+.workflow-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.nav-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.step-indicator {
+  color: #666;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Agent List
+   ============================================================ */
+.agent-list {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.agent-list h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Category Filter Buttons */
+.category-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: white;
+  border: 2px solid #e5e7eb;
+  color: #333;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-btn:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+  font-weight: 600;
+}
+
+.filter-btn-pindex:not(.active) {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+.filter-btn-pindex:not(.active):hover {
+  background: #f5f3ff;
+  border-color: #8b5cf6;
+}
+
+.filter-btn-pindex.active {
+  background: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.filter-btn-cindex:not(.active) {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.filter-btn-cindex:not(.active):hover {
+  background: #ecfdf5;
+  border-color: #10b981;
+}
+
+.filter-btn-cindex.active {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+/* Agent Grid */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.agent-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid #e5e7eb;
+}
+
+.agent-card-pindex {
+  border-left-color: #8b5cf6;
+}
+
+.agent-card-cindex {
+  border-left-color: #10b981;
+}
+
+.agent-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.agent-card-header {
+  margin-bottom: 1rem;
+}
+
+.agent-card h3 {
+  margin: 0 0 0.75rem 0;
+  color: #333;
+}
+
+.agent-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.agent-category-badge {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-pindex {
+  background: #f5f3ff;
+  color: #8b5cf6;
+  border: 1px solid #8b5cf6;
+}
+
+.badge-cindex {
+  background: #ecfdf5;
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+.agent-type-badge {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.agent-card p {
+  color: #666;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+  min-height: 3rem;
+}
+
+.agent-card button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+.agent-card button:hover {
+  background: #2563eb;
+}
+
+.agent-card-pindex button {
+  background: #8b5cf6;
+}
+
+.agent-card-pindex button:hover {
+  background: #7c3aed;
+}
+
+.agent-card-cindex button {
+  background: #10b981;
+}
+
+.agent-card-cindex button:hover {
+  background: #059669;
+}
+
+.no-agents {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.error {
+  background: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.message {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Footer Menu
+   ============================================================ */
+.agent-footer {
+  grid-area: footer;
+  background: #1e293b;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.agent-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.agent-footer li {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.agent-footer li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.agent-footer li.active {
+  background: #3b82f6;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Floating Menu
+   ============================================================ */
+.floating-menu {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.floating-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.floating-button:hover {
+  background: #2563eb;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.floating-button.active {
+  background: #1e40af;
+  transform: scale(1.15);
+}
+
+/* ============================================================
+   Dashboard Menu
+   ============================================================ */
+.dashboard-menu {
+  margin-bottom: 2rem;
+}
+
+.dashboard-menu h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.dashboard-card.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+  font-weight: 600;
+}
+
+.dashboard-card .icon {
+  font-size: 2rem;
+}
+
+.dashboard-card .label {
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   Chat Menu
+   ============================================================ */
+.chat-menu {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.chat-button {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.chat-button:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.chat-button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+  font-weight: 600;
+}
+
+.chat-button .icon {
+  font-size: 1.2rem;
+}
+
+/* ============================================================
+   Recommendation Menu
+   ============================================================ */
+.recommendation-menu {
+  background: #fef3c7;
+  border: 2px solid #fbbf24;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.recommendation-menu h4 {
+  margin: 0 0 1rem 0;
+  color: #92400e;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recommendation-menu h4::before {
+  content: '💡';
+  font-size: 1.3rem;
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recommendation-item {
+  background: white;
+  border: 2px solid #fbbf24;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.recommendation-item:hover {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  transform: translateX(4px);
+}
+
+.recommendation-item.active {
+  background: #f59e0b;
+  color: white;
+  border-color: #f59e0b;
+  font-weight: 600;
+}
+
+.recommendation-item .icon {
+  font-size: 1.3rem;
+}
+
+.recommendation-item .label {
+  flex: 1;
+}
+
+/* ============================================================
+   Responsive Design
+   ============================================================ */
+@media (max-width: 768px) {
+  .agent-container {
+    grid-template-areas:
+      "header-menu"
+      "header"
+      "sidebar"
+      "content"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .agent-sidebar {
+    padding: 1rem;
+  }
+
+  .agent-content {
+    padding: 1rem;
+  }
+
+  .workflow-step {
+    padding: 1rem;
+  }
+
+  .agent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agent-header-menu ul {
+    flex-wrap: wrap;
+  }
+
+  .floating-menu {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .floating-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
